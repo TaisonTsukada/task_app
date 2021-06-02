@@ -30,11 +30,18 @@ class TasksController < ApplicationController
     end
 
     def update
-
+        if @task.update(task_params)
+            redirect_to task_path
+        else
+            render :edit
+        end
     end
 
     def destroy
-
+        if current_user.id == @task.user.id
+            @task.destroy
+            redirect_to root_path
+        end
     end
 
     private
