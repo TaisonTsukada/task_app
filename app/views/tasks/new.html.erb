@@ -1,6 +1,6 @@
 <%= form_with(model: @task, local: true ) do |f| %>
-    <%= f.text_field :title%>
-    <%= f.text_area :content %>
+    <%= f.text_field :title, class: "form-control"%>
+    <%= f.text_area :content, class: "form-control" %>
     <%= f.datetime_field :deadline%>
     <%= f.collection_select(:status_id, Status.where.not(id: 3), :id, :name, {}, {class: "status-select"}) %>
     <%= f.submit "登録する" %>
