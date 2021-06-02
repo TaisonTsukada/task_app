@@ -9,4 +9,12 @@ class Task < ApplicationRecord
         validates :deadline
         validates :status_id
     end
+
+    paginates_per 10
+
+    scope :index_all, -> {
+        select(:id, :title, :content, :deadline, :status_id)
+        .order(created_at: :desc)
+        .includes(:user)
+    }
 end
