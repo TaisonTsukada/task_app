@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   root to: "tasks#index"
   resources :tasks
+  get '/tasks/:id/assign', to: 'tasks#assign',as: :assign_task
+  resources :users, only: [:show]
 end

@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
-    before_action :authenticate_user!, only: [:new, :create, :destroy, :edit]
-    before_action :set_task, only: [:show, :destroy, :edit, :update]
-    before_action :move_to_index, only: [:edit, :update]
+    before_action :authenticate_user!, only: [:new, :create, :destroy, :edit, :assign]
+    before_action :set_task, only: [:show, :destroy, :edit, :update, :assign]
+    before_action :move_to_index, only: [:edit, :update, :assign]
 
     def index
         @tasks = Task.index_all.page(params[:page])
@@ -42,10 +42,17 @@ class TasksController < ApplicationController
         end
     end
 
+    def assign
+    end
+
+    def assign_update
+
+    end
+
     private
 
     def task_params
-        params.require(:task).permit(:title, :content, :deadline, :status_id).merge(user_id: current_user.id)
+        params.require(:task).permit(:title, :content, :deadline, :status_id, :user_id)
     end
 
     def set_task
