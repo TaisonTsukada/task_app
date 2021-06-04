@@ -13,7 +13,7 @@ class Task < ApplicationRecord
     paginates_per 10
 
     scope :index_all, -> {
-        select(:id, :title, :content, :deadline, :status_id)
+        select(:id, :title, :content, :deadline, :status_id, :user_id)
         .order(created_at: :desc)
         .includes(:user)
     }
