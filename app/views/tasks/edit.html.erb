@@ -15,7 +15,7 @@
         </div>
         <div class="field">
             <%= f.label :status_id %>
-            <%= f.collection_select(:status_id, Status.where.not(id: 3), :id, :name, {}, {class: "status-select"}) %>
+            <%= f.collection_select(:status_id, Status.all, :id, :name, {}, {class: "status-select"}) %>
         </div>
         <%= f.hidden_field :user_id, value: current_user.id%>
         <%= f.submit '更新する', class: 'btn btn-primary' %>

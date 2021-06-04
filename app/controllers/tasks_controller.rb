@@ -45,10 +45,6 @@ class TasksController < ApplicationController
     def assign
     end
 
-    def assign_update
-
-    end
-
     private
 
     def task_params
