@@ -1,7 +1,23 @@
-<%= form_with(model: @task, local: true ) do |f| %>
-    <%= f.text_field :title, class: "form-control"%>
-    <%= f.text_area :content, class: "form-control" %>
-    <%= f.datetime_field :deadline%>
-    <%= f.collection_select(:status_id, Status.where.not(id: 3), :id, :name, {}, {class: "status-select"}) %>
-    <%= f.submit "登録する" %>
-<% end %>
+<div class="container">
+    <h1>タスク作成</h1>
+    <%= form_with model: @task, local: true do |f| %>
+        <div class="field">
+            <%= f.label :title %>
+            <%= f.text_field :title, class: "form-control"%>
+        </div>
+        <div class="field">
+            <%= f.label :content %>
+            <%= f.text_area :content, class: "form-control"%>
+        </div>
+        <div class="field">
+            <%= f.label :deadline %>
+            <%= f.datetime_select :deadline,{}, class: "form-select"%>
+        </div>
+        <div class="field">
+            <%= f.label :status_id %>
+            <%= f.collection_select(:status_id, Status.where.not(id: 3), :id, :name, {}, {class: "status-select form-select"}) %>
+        </div>
+        <%= f.submit '作成する', class: 'btn btn-primary' %>
+        <%= link_to "一覧へ戻る", root_path, class:"btn btn-light"%>
+    <% end %>
+</div>
