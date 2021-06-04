@@ -57,3 +57,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'nokogiri', '~> 1.11.6'
 gem 'devise'
+gem 'active_hash'
+gem 'bootstrap', '~> 4.5.0'
+gem 'jquery-rails'
+gem 'kaminari'
+gem 'byebug'
+gem 'pry-rails'
