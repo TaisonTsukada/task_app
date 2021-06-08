@@ -14,7 +14,11 @@
   </div>
   <div class="field mt-2">
     <%= f.label :status_id, "ステータス" %><br>
+  <% if params[:action] == "edit"%>
     <%= f.collection_radio_buttons(:status_id, Status.all, :id, :name, {}, {class: "status-select"}) %>
+  <% else %>
+    <%= f.collection_radio_buttons(:status_id, Status.where.not(id: 3), :id, :name, {}, {class: "status-select"}) %>
+  <% end %>
   </div>
   <%= f.hidden_field :user_id, value: current_user.id%>
 

@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   before_action :move_to_index, only: [:edit, :update, :assign]
 
   def index
-    @tasks = Task.index_all.page(params[:page])
+    @tasks = Task.index_all.page(params[:page]).per(6)
   end
 
   def new
