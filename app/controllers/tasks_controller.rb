@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :destroy, :edit, :assign]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_task, only: [:show, :destroy, :edit, :update, :assign]
-  before_action :move_to_index, only: [:edit, :update, :assign]
+  before_action :move_to_index, only: [:edit, :update, :assign, :destroy]
 
   def index
     @tasks = Task.index_all.page(params[:page]).per(6)
