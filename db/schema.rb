@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_06_02_054406) do
 
-  create_table "tasks", charset: "utf8mb4", force: :cascade do |t|
+  create_table "tasks", charset: "utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "content", null: false
     t.datetime "deadline", null: false
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_06_02_054406) do
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
-  create_table "users", charset: "utf8mb4", force: :cascade do |t|
+  create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "name"

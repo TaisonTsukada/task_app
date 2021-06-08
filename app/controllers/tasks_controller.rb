@@ -56,9 +56,6 @@ class TasksController < ApplicationController
   end
 
   def move_to_index
-    set_task
-    unless current_user.id ==  @task.user.id
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user.id !=  @task.user.id
   end
 end
