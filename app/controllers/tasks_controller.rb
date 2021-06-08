@@ -4,11 +4,11 @@ class TasksController < ApplicationController
   before_action :move_to_index, only: [:edit, :update, :assign]
 
   def index
-      @tasks = Task.index_all.page(params[:page])
+    @tasks = Task.index_all.page(params[:page])
   end
 
   def new
-      @task = Task.new
+    @task = Task.new
   end
 
   def show
@@ -28,11 +28,11 @@ class TasksController < ApplicationController
   end
 
   def update
-      if @task.update(task_params)
-          redirect_to task_path
-      else
-          render :edit
-      end
+    if @task.update(task_params)
+        redirect_to task_path
+    else
+        render :edit
+    end
   end
 
   def destroy

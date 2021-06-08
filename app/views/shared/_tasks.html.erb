@@ -1,0 +1,26 @@
+<%= link_to "タスク新規作成", new_task_path, class: "btn btn-light"%>
+  <div class = "row">
+      <% @tasks.each do |task|%>
+          <div class = "col-xs-12 col-md-6 mb-5">
+              <% if Time.now <= task.deadline %>
+              <div class="card border-success" style="width: 30rem;">
+                  <div class="card-header bg-success"><%= task.title %></div>
+              <% else %>
+              <div class="card border-danger" style="width: 30rem;">
+                  <div class="card-header bg-danger"><%= task.title %></div>
+              <% end %>
+                  <div class="card-body">
+                      <p class="card-text"><%= task.content%></p>
+                      <p class= "card-text">期限：<%= task.deadline.to_s(:datetime_jp)%></p>
+                      <p>担当者：<%= task.user.name %></p>
+                      <p>ステータス：<%= task.status.name%></p>
+                      <%= link_to "詳細",task_path(task.id), class: "btn btn-light"%>
+                  <% if user_signed_in? && task.user.id == current_user.id%>
+                      <%= link_to "編集",edit_task_path(task.id), class: "btn btn-info"%>
+                      <%= link_to "削除",task_path(task.id), class: "btn btn-danger", method: :delete%>
+                  <% end %>
+                  </div>
+              </div>
+          </div>
+      <% end %>
+  </div>

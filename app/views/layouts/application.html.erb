@@ -19,16 +19,16 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-        <%if user_signed_in?%>
-          <%= link_to "マイタスク", user_path(current_user.id), class: "nav-link"%>
-        <% end %>
+          <%= link_to "タスク一覧", root_path, class: "nav-link"%>
         </li>
         <li class="nav-item">
-          <%= link_to "タスク一覧", root_path, class: "nav-link"%>
+        <%if user_signed_in?%>
+          <%= link_to "マイタスク", user_path(current_user.id), class: "nav-link"%>
         </li>
         <li class="nav-item">
           <%= link_to "ユーザー設定", edit_user_registration_path, class: "nav-link", tabindex: "-1"%>
         </li>
+        <% end %>
       </ul>
       <div class="mt-2 mt-md-0 d-flex">
         <%if user_signed_in? %>
@@ -41,6 +41,16 @@
       </div>
     </div>
   </nav>
+  <% if flash[:notice] %>
+    <% flash.each do |message_type, message|%>
+      <%= content_tag :div, message, class: "alert alert-success"%>
+    <% end %>
+  <% else %>
+    <% flash.each do |message_type, message|%>
+      <%= content_tag :div, message, class: "alert alert-danger"%>
+    <% end %>
+  <% end %>
+
     <%= yield %>
   </body>
 </html>
