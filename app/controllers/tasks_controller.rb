@@ -36,10 +36,11 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    if current_user.id == @task.user.id
-      @task.destroy
-      redirect_to root_path
+    if current_user.id != @task.user.id
+      raise "実行時エラーです"
     end
+		@task.destroy
+    redirect_to root_path
   end
 
   def assign
