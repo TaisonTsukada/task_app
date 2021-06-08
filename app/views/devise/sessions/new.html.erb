@@ -1,5 +1,8 @@
 <div class="container">
   <h2>ログイン</h2>
+  <% flash.each do |message_type, message|%>
+    <%= content_tag :div, message, class: "alert alert-danger"%>
+  <% end %>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
     <div class="field">

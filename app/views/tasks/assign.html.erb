@@ -18,7 +18,7 @@
       <%= f.submit 'アサインする', class: 'btn btn-success' %>
     <% end %>
   </div>
-  <div class="jumbotron">
+  <div class="jumbotron mt-3">
     <h1 class="display-4"><%= @task.title%></h1>
     <p><%= @task.content %></p>
     <p>期限：<%= @task.deadline.to_s(:datetime_jp)%></p>
