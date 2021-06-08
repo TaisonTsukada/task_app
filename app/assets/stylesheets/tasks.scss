@@ -1,4 +1,15 @@
 header {
-    margin-bottom: 100px;
+  margin-bottom: 100px;
 }
 
+.bootstrap-date {
+  display: inline-block;
+  width: auto;
+}
+
+.field_with_errors {
+  display: contents;
+  input {
+    @extend .is-invalid;
+  }
+}

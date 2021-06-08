@@ -1,20 +1,21 @@
 <div class="container">
   <h1>タスク作成</h1>
   <%= form_with model: @task, local: true do |f| %>
-    <div class="field">
+		<%= render 'shared/error', model: f.object %>
+    <div class="field mt-2">
       <%= f.label :title, "タイトル" %>
       <%= f.text_field :title, class: "form-control"%>
     </div>
-    <div class="field">
+    <div class="field mt-2">
       <%= f.label :content, "内容" %>
       <%= f.text_area :content, class: "form-control"%>
     </div>
-    <div class="field">
-      <%= f.label :deadline, "締め切り" %>
-      <%= f.datetime_select :deadline,{}, class: "form-select"%>
+    <div class="field mt-2">
+      <%= f.label :deadline, "締め切り" %><br>
+      <%= f.datetime_select :deadline,{},class: "form-control bootstrap-date"%>
     </div>
-    <div class="field">
-			<%= f.label :status_id, "ステータス" %>
+    <div class="field mt-2">
+			<%= f.label :status_id, "ステータス" %><br>
       <%= f.collection_radio_buttons(:status_id, Status.where.not(id: 3), :id, :name, {}, {class: "status-select form-select"}) %>
     </div>
       <%= f.hidden_field :user_id, value: current_user.id%>

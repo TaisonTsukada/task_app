@@ -1,6 +1,6 @@
 <div class = "container">
   <h1>タスク一覧</h1>
-  <%= link_to "New Task", new_task_path, class: "btn btn-light"%>
+  <%= link_to "タスク新規作成", new_task_path, class: "btn btn-light"%>
   <div class = "row">
       <% @tasks.each do |task|%>
           <div class = "col-xs-12 col-md-6 mb-5">
