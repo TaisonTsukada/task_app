@@ -1,24 +1,4 @@
 <div class="container">
-    <h1>タスク編集</h1>
-    <%= form_with model: @task, local: true do |f| %>
-        <div class="field mt-2">
-            <%= f.label :title, "タイトル" %>
-            <%= f.text_field :title, class: "form-control"%>
-        </div>
-        <div class="field mt-2">
-            <%= f.label :content, "内容" %>
-            <%= f.text_area :content, class: "form-control"%>
-        </div>
-        <div class="field mt-2">
-            <%= f.label :deadline, "締め切り" %><br>
-            <%= f.datetime_select :deadline,{},class: "form-control bootstrap-date"%>
-        </div>
-        <div class="field mt-2">
-            <%= f.label :status_id, "ステータス" %><br>
-            <%= f.collection_radio_buttons(:status_id, Status.all, :id, :name, {}, {class: "status-select"}) %>
-        </div>
-        <%= f.hidden_field :user_id, value: current_user.id%>
-        <%= f.submit '更新する', class: 'btn btn-success' %>
-        <%= link_to "一覧へ戻る", root_path, class:"btn btn-light"%>
-    <% end %>
+  <h1>タスク編集</h1>
+	<%= render partial: "shared/form" %>
 </div>
