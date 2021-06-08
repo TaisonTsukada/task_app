@@ -11,38 +11,36 @@
   </head>
 
   <body>
-    <header>
-      <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light text-muted mb-5">
-        <div class="container-fluid">
-          <%= link_to "タスク管理アプリ",root_path, class: "navbar-brand"%>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
-              <li class="nav-item active">
-              <%if user_signed_in?%>
-                <%= link_to "マイタスク", user_path(current_user.id), class: "nav-link"%>
-              <% end %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "タスク一覧", root_path, class: "nav-link"%>
-              </li>
-              <li class="nav-item">
-                <%= link_to "ユーザー設定", edit_user_registration_path, class: "nav-link", tabindex: "-1"%>
-              </li>
-              <li class="nav-item ml-5">
-                <%if user_signed_in? %>
-                  <%= link_to "サインアウト", destroy_user_session_path, method: :delete, class: "nav-link", tabiindex: "-1",data: { confirm: '本当にログアウトしますか?' } %>
-                <% else %>
-                  <%= link_to "サインイン", new_user_registration_path, tabindex: "-1", class: "nav-link" %>
-                <% end %>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+  <nav class="navbar navbar-expand-md navbar-light bg-light mb-4">
+    <%= link_to "タスク管理アプリ",root_path, class: "navbar-brand"%>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+        <%if user_signed_in?%>
+          <%= link_to "マイタスク", user_path(current_user.id), class: "nav-link"%>
+        <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "タスク一覧", root_path, class: "nav-link"%>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ユーザー設定", edit_user_registration_path, class: "nav-link", tabindex: "-1"%>
+        </li>
+      </ul>
+      <div class="mt-2 mt-md-0 d-flex">
+        <%if user_signed_in? %>
+          <p class="mt-2">ようこそ<%= current_user.name%>さん</p>
+          <%= link_to "サインアウト", destroy_user_session_path, method: :delete, class: "nav-link", tabiindex: "-1",data: { confirm: '本当にログアウトしますか?' } %>
+        <% else %>
+          <%= link_to "サインアップ", new_user_registration_path, tabindex: "-1", class: "nav-link" %>
+          <%= link_to "ログイン", new_user_session_path, tabindex: "-1", class: "nav-link" %>
+        <% end %>
+      </div>
+    </div>
+  </nav>
     <%= yield %>
   </body>
 </html>

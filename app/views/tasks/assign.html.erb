@@ -1,25 +1,27 @@
 <div class="container">
-    <div class ="field">
-        <%= form_with model: @task, local: true do |f|%>
-            <div>
-                <p>現在アサインされているユーザー</p>
-                <p><%= @task.user.name %></p>
-            </div>
-            <div>
-                <p>新しくアサインするユーザー</p>
-                <%= f.collection_select(:user_id, User.where.not(id: current_user.id), :id, :name, {}, {class: "status-select form-select"}) %>
-                <%= f.hidden_field :title, value: @task.title%>
-                <%= f.hidden_field :content, value: @task.content%>
-                <%= f.hidden_field :deadline, value: @task.deadline%>
-                <%= f.hidden_field :status_id, value: @task.status_id%>
-            </div>
-            <%= f.submit 'アサインする', class: 'btn btn-primary' %>
-        <% end %>
-    </div>
-    <div class="jumbotron">
-        <h1 class="display-4"><%= @task.title%></h1>
-        <p><%= @task.content %></p>
-        <p>期限：<%= @task.deadline.to_s(:datetime_jp)%></p>
-        <p>ステータス：<%= @task.status.name%></p>
-    </div>
+  <div class ="field">
+    <%= form_with model: @task, local: true do |f|%>
+			<div class= "d-flex justify-content-lg-between">
+				<div>
+					<p>現在アサインされているユーザー</p>
+					<p><%= @task.user.name %></p>
+				</div>
+				<div>
+					<p>新しくアサインするユーザー</p>
+					<%= f.collection_select(:user_id, User.where.not(id: current_user.id), :id, :name, {}, {class: "form-control"}) %>
+					<%= f.hidden_field :title, value: @task.title%>
+					<%= f.hidden_field :content, value: @task.content%>
+					<%= f.hidden_field :deadline, value: @task.deadline%>
+					<%= f.hidden_field :status_id, value: @task.status_id%>
+				</div>
+			</div>
+      <%= f.submit 'アサインする', class: 'btn btn-success' %>
+    <% end %>
+  </div>
+  <div class="jumbotron mt-3">
+    <h1 class="display-4"><%= @task.title%></h1>
+    <p><%= @task.content %></p>
+    <p>期限：<%= @task.deadline.to_s(:datetime_jp)%></p>
+    <p>ステータス：<%= @task.status.name%></p>
+  </div>
 </div>
