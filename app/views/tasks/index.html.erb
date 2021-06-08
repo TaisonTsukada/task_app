@@ -1,4 +1,7 @@
 <div class = "container">
   <h1>タスク一覧</h1>
-
+  <%= link_to "タスク新規作成", new_task_path, class: "btn btn-light"%>
+  <div class = "row">
+    <%= render partial: 'shared/task', collection: @tasks%>
+  </div>
 </div>
