@@ -36,10 +36,11 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    if current_user.id == @task.user.id
-      @task.destroy
-      redirect_to root_path
+    if current_user.id != @task.user.id
+      raise "実行時エラーです"
     end
+		@task.destroy
+    redirect_to root_path
   end
 
   def assign
@@ -48,7 +49,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :content, :deadline, :status_id, :user_id)
+    params.require(:task).permit(:title, :content, :deadline, :status, :user_id)
   end
 
   def set_task
@@ -56,9 +57,6 @@ class TasksController < ApplicationController
   end
 
   def move_to_index
-    set_task
-    unless current_user.id ==  @task.user.id
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user.id !=  @task.user.id
   end
 end
