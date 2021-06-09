@@ -1,7 +1,6 @@
 class Task < ApplicationRecord
     belongs_to :user
-    extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to_active_hash :status
+    enum status: {backlog: 0, wip: 1, closed:2}
 
     with_options presence: true do
         validates :title
