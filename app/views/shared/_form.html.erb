@@ -13,12 +13,18 @@
     <%= f.datetime_select :deadline,{},class: "form-control bootstrap-date"%>
   </div>
   <div class="field mt-2">
-    <%= f.label :status_id, "ステータス" %><br>
-  <% if params[:action] == "edit"%>
-    <%= f.collection_radio_buttons(:status_id, Status.all, :id, :name, {}, {class: "status-select"}) %>
-  <% else %>
-    <%= f.collection_radio_buttons(:status_id, Status.where.not(id: 3), :id, :name, {}, {class: "status-select"}) %>
-  <% end %>
+    <%= f.label :status, "ステータス" %><br>
+
+      <%= f.radio_button :status, :backlog %>
+      <%= f.label :status_backlog, '未対応' %>
+
+      <%= f.radio_button :status, :wip %>
+      <%= f.label :status_wip, '対応中' %>
+
+    <% if params[:action] == "edit" %>
+      <%= f.radio_button :status, :closed %>
+      <%= f.label :status_closed, '完了' %>
+    <% end %>
   </div>
   <%= f.hidden_field :user_id, value: current_user.id%>
 

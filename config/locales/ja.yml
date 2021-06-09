@@ -15,7 +15,7 @@ ja:
         title: タイトル
         content: 内容
         deadline: 締切期日
-        status_id: ステータス
+        status: ステータス
         user_id: 担当者
     errors:
       messages:
@@ -23,6 +23,12 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+  enums:
+    task:
+      status:
+        backlog: "未対応"
+        wip: "対応中"
+        closed: "完了"
   date:
     abbr_day_names:
     - 日
