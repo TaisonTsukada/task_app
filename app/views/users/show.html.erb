@@ -2,7 +2,7 @@
   <h1>マイタスク</h1>
   <%= link_to "タスク新規作成", new_task_path, class: "btn btn-light"%>
   <div class = "row">
-		<%= render partial: 'shared/task', collection: @tasks%>
-		<%= paginate @tasks %>
+    <%= render partial: 'shared/task', collection: @tasks%>
+    <%= paginate @tasks %>
   </div>
 </div>
