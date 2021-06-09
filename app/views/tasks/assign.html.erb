@@ -12,7 +12,7 @@
 					<%= f.hidden_field :title, value: @task.title%>
 					<%= f.hidden_field :content, value: @task.content%>
 					<%= f.hidden_field :deadline, value: @task.deadline%>
-					<%= f.hidden_field :status_id, value: @task.status_id%>
+					<%= f.hidden_field :status, value: @task.status_i18n%>
 				</div>
 			</div>
       <%= f.submit 'アサインする', class: 'btn btn-success' %>

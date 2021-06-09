@@ -6,14 +6,14 @@ class Task < ApplicationRecord
         validates :title
         validates :content
         validates :deadline
-        validates :status_id
+        validates :status
     end
 
     paginates_per 10
 
     scope :index_all, -> {
-        where(status_id: [1,2])
-        .select(:id, :title, :content, :deadline, :status_id, :user_id)
+        where.not(status: :closed)
+        .select(:id, :title, :content, :deadline, :status, :user_id)
         .order(created_at: :desc)
         .includes(:user)
     }
