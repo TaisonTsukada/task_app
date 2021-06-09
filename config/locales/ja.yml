@@ -10,7 +10,7 @@ ja:
   activerecord:
     attributes:
       user:
-        name: ニックネーム
+        name: 名前
       task:
         title: タイトル
         content: 内容
