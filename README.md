@@ -26,6 +26,7 @@
 `usersテーブル`
 - Deviseデフォルトのカラム
 - 名前(name)
+
 `tasksテーブル`
 - タイトル(title)
 - 内容(content)
