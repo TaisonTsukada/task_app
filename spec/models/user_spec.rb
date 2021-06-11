@@ -40,7 +40,6 @@ RSpec.describe User, type: :model do
       it 'emailが一意性でないと登録できない' do
         @user.save
         another_user = FactoryBot.build(:user, email: @user.email)
-        binding.pry
         another_user.valid?
         expect(another_user.errors.full_messages).to include('Eメールはすでに存在します')
       end
